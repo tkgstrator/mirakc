@@ -1,0 +1,3 @@
+[submodule "softcas"]
+	path = softcas
+	url = git@github.com:tkgstrator/softcas.git

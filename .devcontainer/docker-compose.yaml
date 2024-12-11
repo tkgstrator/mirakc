@@ -1,0 +1,12 @@
+services:
+  mirakc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/home/vscode/app:cached
+    tty: true
+    stdin_open: true
+
+volumes:
+  node_modules:
