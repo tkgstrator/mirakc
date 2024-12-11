@@ -7,6 +7,3 @@ services:
       - ../:/home/vscode/app:cached
     tty: true
     stdin_open: true
-
-volumes:
-  node_modules:

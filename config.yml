@@ -4,54 +4,50 @@ epg:
 server:
   addrs:
     - http: '0.0.0.0:40772'
-  mounts:
-    /miraview:
-      path: /var/www/miraview
-      index: index.html
+  # mounts:
+  #   /miraview:
+  #     path: /var/www/miraview
+  #     index: index.html
 
 channels:
   - name: NHKEテレ大阪
     type: GR
     channel: '13'
-    isDisabled: false
+    disabled: false
   - name: 読売テレビ
     type: GR
     channel: '14'
-    isDisabled: false
+    disabled: false
   - name: ABCテレビ
     type: GR
     channel: '15'
-    isDisabled: false
+    disabled: false
   - name: MBS毎日放送
     type: GR
     channel: '16'
-    isDisabled: false
+    disabled: false
   - name: 関西テレビ
     type: GR
     channel: '17'
-    isDisabled: false
+    disabled: false
   - name: テレビ大阪
     type: GR
     channel: '18'
-    isDisabled: false
+    disabled: false
   - name: NHK総合・大阪
     type: GR
     channel: '24'
-    isDisabled: false
+    disabled: false
   - name: サンテレビ
     type: GR
     channel: '26'
-    isDisabled: false
+    disabled: false
 
 tuners:
-  - name: adapter0
-    types:
-      - GR
-    dvbDevicePath: /dev/dvb/adapter0/dvr0
-    decoder: arib-b25-stream-test
+  - name: PX-S1UD_0
+    types: [GR]
     command: >-
-      dvbv5-zap -a 0 -c ./config/dvbconf-for-isdb/conf/dvbv5_channels_isdbt.conf
-      -r -P <channel>
+        recdvb --dev 0 {{channel}} {{duration}} -
 
 filters:
   decode-filter:
