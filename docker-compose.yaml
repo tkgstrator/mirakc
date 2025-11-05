@@ -1,0 +1,19 @@
+services:
+  mirakc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - mirakc-epg:/var/lib/mirakc/epg/
+      - ./config.yml:/etc/mirakc/config.yml:ro
+    ports:
+      - 40772:40772
+    environment:
+      TZ: Asia/Tokyo
+      RUST_LOG: info
+    restart: unless-stopped
+    devices:
+      - /dev/dvb/adapter0/dvr0
+
+volumes:
+  mirakc-epg:

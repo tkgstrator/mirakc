@@ -1,0 +1,55 @@
+epg:
+  cache-dir: /var/lib/mirakc/epg
+
+server:
+  addrs:
+    - http: '0.0.0.0:40772'
+  # mounts:
+  #   /miraview:
+  #     path: /var/www/miraview
+  #     index: index.html
+
+channels:
+  - name: NHKEテレ大阪
+    type: GR
+    channel: '13'
+    disabled: false
+  - name: 読売テレビ
+    type: GR
+    channel: '14'
+    disabled: false
+  - name: ABCテレビ
+    type: GR
+    channel: '15'
+    disabled: false
+  - name: MBS毎日放送
+    type: GR
+    channel: '16'
+    disabled: false
+  - name: 関西テレビ
+    type: GR
+    channel: '17'
+    disabled: false
+  - name: テレビ大阪
+    type: GR
+    channel: '18'
+    disabled: false
+  - name: NHK総合・大阪
+    type: GR
+    channel: '24'
+    disabled: false
+  - name: サンテレビ
+    type: GR
+    channel: '26'
+    disabled: false
+
+tuners:
+  - name: PX-S1UD_0
+    types: [GR]
+    command: >-
+        recdvb --dev 0 {{channel}} {{duration}} -
+
+filters:
+  decode-filter:
+    command: >-
+      recisdb decode --input - -
